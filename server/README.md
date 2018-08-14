@@ -1,0 +1,1 @@
+## The API server for Loyality Exchange

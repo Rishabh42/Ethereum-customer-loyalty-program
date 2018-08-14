@@ -1,0 +1,37 @@
+{
+  "name": "web-client",
+  "version": "0.1.0",
+  "private": true,
+  "proxy": {
+    "/api/*": {
+      "target": "http://localhost:8080"
+    },
+    "/au": {
+      "target": "http://localhost:8080"
+    }
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "material-ui": "^0.20.1",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-dropdown": "^1.5.0",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "1.1.4",
+    "react-select": "^1.2.1",
+    "react-tag-input": "^5.1.0",
+    "web3": "^1.0.0-beta.34"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "description": "`npm install`\r `npm start`",
+  "main": "index.js",
+  "devDependencies": {},
+  "author": "",
+  "license": "ISC"
+}
