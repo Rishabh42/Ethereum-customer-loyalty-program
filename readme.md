@@ -1,6 +1,6 @@
-Loyalty Program
+# Loyalty Program
 
-Business Problem
+## Business Problem
 Consumer loyalty programs represent strategic investments and are applicable to all
 types of organizations. Currently, their disparate nature does not allow consumers (or
 have limited capability) to consume them effectively across different
@@ -29,7 +29,7 @@ if user clicks on ‘confirm’, changes will take place immediately.
 5. New card and existing value should reflect in respective local DBs of card
 companies so that earned/exchanged points can be honored.
 
-P2P Network
+## P2P Network
 No of Nodes: 6
 Node # 1: Reliance Digital
 Node # 2: Star Alliance
@@ -54,7 +54,7 @@ Value
 
 $1 $5 $2
 
-Smart Contract
+## Smart Contract
 Transfer of relevant $ amount between transacting companies. If balance is less than
 the required transfer amount, exception will be thrown and user will be requested to
 contact the parent company.
