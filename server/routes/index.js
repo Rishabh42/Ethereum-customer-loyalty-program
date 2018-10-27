@@ -4,6 +4,7 @@ var jwt = require('jsonwebtoken');
 var User = require('../DB/models/user');
 const formidable = require('express-formidable');
 const Web3 = require('web3');
+const mailer = require('../helper/mailer');
 var LoyaltyFactory = require('../ethereum/build/Loyalty.json');
 var parseXlsx = require('excel');
 const web3 = new Web3(new Web3.providers.HttpProvider(process.env.NODEURL));
