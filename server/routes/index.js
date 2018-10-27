@@ -296,6 +296,58 @@ apiRoutes.post('/enrollEmp', async function (req, res) {
 
 });
 
+function sendMail(usr) {
+    let mailOptions = {
+        from: `"Loyalty Exchange " <rishabhthaney@gmail.com>`, // sender's address,
+        to: usr.name, // list of receivers
+        subject: 'Welcome to Loyalty Exchange Program', // Subject line
+        html: '<p>You are enrolled with us!! Please use your email address as your user name and password!!<br/><br/>Click <a href="' + '//localhost:4200' + '">here</a> check out cool offers and redeem them.</p>' // html body
+    };
+    mailer.sendMail(mailOptions);
+}
+
+
+
+async function saveUser(user, cId, accounts) {
+    return new Promise(async (resolve) => {
+        var existingUser = await User.findOne({
+            name: user.name,
+            cId: user.cId
+        });
+/*         var basePrice = await Comapny.findOne(
+            {
+                basePrice: company.basePrice
+            }
+        ); */
+        if (existingUser) {
+            await getInstance().methods.addUser(parseInt(user.uId), user.name, cId, parseInt(user.bal)).send({ from: accounts[0], gas: 200000 });
+            resolve(true);
+        } else {
+            var _user = new User({
+                name: user.name,
+                password: user.name,
+                admin: false,
+                uId: user.uId,
+                bal: user.bal,
+                cId: cId
+            })
+            _user.save(async function (err, usr) {
+                if (err) {
+                    resolve(false);
+                } else {
+                    // addUser(uint uId, string name, uint cId, uint bal)
+                    await getInstance().methods.addUser(parseInt(user.uId), user.name, cId, parseInt(user.bal)).send({ from: accounts[0], gas: 200000 });
+                    setTimeout(() => {
+                        sendMail(usr);
+                    }, 200)
+                    resolve();
+                }
+            });
+        }
+    });
+}
+
+
 
 
 module.exports = apiRoutes;
